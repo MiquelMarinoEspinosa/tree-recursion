@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  php-cli:
+    build:
+      context: etc/devel/docker/php
+    image: php/php-cli
+    container_name: tree-recursion.php-cli
+    volumes:
+      - ".:/app"
+    tty: true
