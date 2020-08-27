@@ -4,38 +4,26 @@ namespace TreeRecursion\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
 use TreeRecursion\Tree;
+use TreeRecursion\TreeParentNode;
+use TreeRecursion\TreeChildrenNode;
+use TreeRecursion\TreeHierarchy;
 
 class GetUserUseCaseTest extends TestCase
 {
-  public function testName() {
-    $expectedName = 'Tree 1';
-    $actualName = (new Tree())->setName($expectedName)->name();
-    $this->assertSame(
-      $expectedName, 
-      $actualName
-    );
-  }
+  public function testTreeWithNeitherParentsNorChildren()
+    {
+        $tree4 = (new Tree())->setName('Tree 4');
+        $treeParentNode4 = new TreeParentNode($tree4, null);
+        $treeSiblingsNode4 = new TreeChildrenNode($tree4, null);
 
-  public function testParent() {
-    $expectedParent = (new Tree())->setName('Parent Tree 1');
-    $actualParent = (new Tree())->setParent($expectedParent)->parent();
-    $this->assertEquals(
-      $expectedParent, 
-      $actualParent
-    );
-  }
+        $expectedTreeHierarchy = new TreeHierarchy(
+          $tree4,
+          $treeParentNode4,
+          $treeSiblingsNode4
+        );
 
-  public function testChildren() {
-    $expectedChild = (new Tree())->setName('Child Tree 1');
-    $anotherExpectedChild = (new Tree())->setName('Child Tree 2');
-    $expectedChildren = [$expectedChild, $anotherExpectedChild];
-    $actualChildren = (new Tree())
-                              ->addChild($expectedChild)
-                              ->addChild($anotherExpectedChild)
-                              ->children();
-    $this->assertEquals(
-      $expectedChildren, 
-      $actualChildren
-    );
-  }
+        $treeHierarchy = $tree4->hierarchy();
+
+        $this->assertEquals($expectedTreeHierarchy, $treeHierarchy);
+    }
 }
