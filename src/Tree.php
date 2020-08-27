@@ -38,7 +38,7 @@ class Tree {
       $treeChildrenNodesHierarchy = [];
       /** @var Tree $child */
       foreach ($children as $child) {
-        $treeChildrenNodesHierarchy[] = $this->getDescendents($child, $child->children);
+        $treeChildrenNodesHierarchy[] = $this->getDescendants($child, $child->children);
       }
 
       return new TreeChildrenNode($tree, $treeChildrenNodesHierarchy);
@@ -58,9 +58,9 @@ class Tree {
     return $this;
   }
 
-  public function setChildren(array $children): self
+  public function addChild(Tree $child): self
   {
-    $this->children = $children;
+    $this->children[] = $child;
 
     return $this;
   }
