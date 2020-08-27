@@ -15,9 +15,9 @@ class TreeChildrenNode
     $this->children = $children;
   }
 
-  public function tree(): Tree
+  public function treeName(): string
   {
-    return $this->tree;
+    return $this->tree->name();
   }
 
   public function children(): ?array

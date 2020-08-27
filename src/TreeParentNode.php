@@ -19,8 +19,8 @@ class TreeParentNode
     return $this->parent;
   }
 
-  public function tree(): Tree
+  public function treeName(): string
   {
-    return $this->tree;
+    return $this->tree->name();
   }
 }
