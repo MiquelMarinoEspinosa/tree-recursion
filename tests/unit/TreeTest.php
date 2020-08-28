@@ -8,7 +8,7 @@ use TreeRecursion\TreeParentNode;
 use TreeRecursion\TreeChildrenNode;
 use TreeRecursion\TreeHierarchy;
 
-class GetUserUseCaseTest extends TestCase
+class TreeTest extends TestCase
 {
   public function testTreeWithNeitherAncestorsNorChildren()
   {

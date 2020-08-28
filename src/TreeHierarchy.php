@@ -49,7 +49,7 @@ class TreeHierarchy
      */
     private function buildDescendants(?array $childrenNode): ?array
     {
-        if ($childrensNode === null) {
+        if ($childrenNode === null) {
             return null;
         }
 
@@ -58,7 +58,7 @@ class TreeHierarchy
         foreach ($childrenNode as $childNode) {
             $childrenAsArray = $this->buildDescendants($childNode->children());
             $childAsArray['tree'] = $childNode->treeName();
-            $childAsArray['siblings'] = $childrenAsArray;
+            $childAsArray['children'] = $childrenAsArray;
             $childrensAsArray[] = $childAsArray;
         }
 
